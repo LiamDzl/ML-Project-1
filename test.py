@@ -15,17 +15,17 @@ training_data = np.array(training_data)
 training_data = torch.FloatTensor(training_data)
 training_labels = training_data[: , 0] # Save labels
 training_data = training_data[: , 1:] # Remove labels from main tensor
-training_inputs = training_data / 255 # MATRIX 60000 x 785
-training_outputs = labels_to_tensor(training_labels)
+training_inputs = training_data / 255 # TENSOR 60000 x 784
+training_outputs = labels_to_tensor(training_labels) # 60000 x 10
 
 test_data = pd.read_csv('archive-2/mnist_test.csv')
 test_data = np.array(test_data)
 test_data = torch.FloatTensor(test_data)
 test_labels = test_data[: , 0] # Save labels
 test_data = test_data[: , 1:] # Remove labels from main tensor
-test_inputs = test_data / 255 # MATRIX 60000 x 785
-test_inputs.reshape(10000, 784)
-test_outputs = labels_to_tensor(test_labels)
+test_inputs = test_data / 255 
+test_inputs.reshape(10000, 784) # TENSOR 10000 x 784
+test_outputs = labels_to_tensor(test_labels) # 10000 x 10
 
 nn1 = model(structure = [784, 100, 100, 10], output_function = "softmax")
 
