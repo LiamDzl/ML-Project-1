@@ -12,7 +12,7 @@ from functions import fixed_digits, labels_to_tensor
 class model(nn.Module):
     def __init__(self, structure, output_function):
         super().__init__() # because of inheritance
-        layers = [] # this object is a python list, but contains actual affine maps 
+        layers = [] 
 
         for i in range(len(structure) - 1):  # n layers need n-1 Linear maps
             layers.append(nn.Linear(structure[i], structure[i + 1]))
@@ -64,7 +64,7 @@ def run_mnist_model(model, training_inputs, test_inputs, training_outputs, test_
     for epoch in range(epochs):
         print(f"\n----- Epoch {epoch} ----------------------")
         permutation = torch.randperm(training_size) # big random row vector (though in tensor form) - tensor([blah, blah...])
-        training_inputs = training_inputs[permutation] # built in functionality of pytorch ! - shuffle rows around
+        training_inputs = training_inputs[permutation] 
         training_outputs = training_outputs[permutation]
 
         for batch in range(int(training_size / batch_size)): # now handful of batched steps per epoch
@@ -74,10 +74,9 @@ def run_mnist_model(model, training_inputs, test_inputs, training_outputs, test_
 
             nn_output = model.forward(x)
             loss_scalar = loss_function(nn_output, y)
-            optimiser.zero_grad() # Apparently PyTorch 'adds' whatever .backward() gave it to current meta-data,
-            # so u need to clear gradient to = None
+            optimiser.zero_grad() 
 
-            loss_scalar.backward() # backprop, computes all parameter gradients for you ! --> stores in 'nn1' object, under meta data
+            loss_scalar.backward()
             optimiser.step() 
 
             # Following gives progress reports as we run through epochs
