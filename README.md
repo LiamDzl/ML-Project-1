@@ -2,7 +2,7 @@
 
 The Problem: Given any arbitrary (continuous) function $f: [0,1]^d \to [0,1]^m$, and a fixed number of $n$ neurons for the  hidden layers, what is the best configuration for the neural network? How do we strike a balance between width and depth?
 
-We're often told ``depth over width" when designing neural network architectures.  But exactly _how_ deep do they need to be? If we take this mantra to the extreme (arranging our $n$ neurons into a long chain of $n$ hidden layers), then we clearly lose much of the potential complexity our model could capture. 
+We're often told "depth over width" when designing neural network architectures.  But exactly _how_ deep do they need to be? If we take this mantra to the extreme (arranging our $n$ neurons into a long chain of $n$ hidden layers), then we clearly lose much of the potential complexity our model could capture. 
 
 So what's the optimal structure? How does it vary with the ratios $d:m:n$ ? Does the structure vary wildly for different functions $f: [0,1]^d \to [0,1]^m$, or are there general heuristics we can follow?
 
